@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const schema = yup.object({
   name: yup.string().required().matches(/^[aA-zZ]+$/, "Only alphabets are allowed for this field "),
@@ -44,21 +44,27 @@ export default function Signin({ signin, type }) {
 
   return (
     <div>
-      {type == 3 ? <h3>הרשמות לספרייה</h3> : <h3>הוספת עובד</h3>}
-      <form onSubmit={handleSubmit(onSubmit)} className="enter">
-        <input id="inputEnter"{...register("name")} placeholder="Name" type="text" />
-        <p>{errors.name?.message}</p>
-        <input id="inputEnter"{...register("address")} placeholder="Address" />
-        <p>{errors.address?.message}</p>
-        <input id="inputEnter"{...register("phone")} placeholder="Phone" />
-        <p>{errors.phone?.message}</p>
-        <input id="inputEnter"{...register("mail")} placeholder="Mail" />
-        <p>{errors.mail?.message}</p>
-        <input id="inputEnter"{...register("password")} type="password" placeholder="Password" />
-        <p>{errors.password?.message}</p>
+      <div className="header-section">
+        <img className='logo-image' src="../images/small-logo.png" alt="Italian Trulli"></img>
+        <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
+
+      </div>
+      <form onSubmit={handleSubmit(onSubmit)} className="enter-form">
+      {type == 3 ? <h3>הרשמה לספרייה</h3> : <h3>הוספת עובד</h3>}
+
+        <input {...register("name")} placeholder="Name" type="text" />
+        <p className='error-label'>{errors.name?.message}</p>
+        <input {...register("address")} placeholder="Address" />
+        <p className='error-label'>{errors.address?.message}</p>
+        <input {...register("phone")} placeholder="Phone" />
+        <p className='error-label'>{errors.phone?.message}</p>
+        <input {...register("mail")} placeholder="Mail" />
+        <p className='error-label'>{errors.mail?.message}</p>
+        <input {...register("password")} type="password" placeholder="Password" />
+        <p className='error-label'>{errors.password?.message}</p>
         <input id="toSubmitEnter" type="submit" />
+        <Link to="/signin/login">Back</Link>
       </form>
-      <img id="logo1" src="../images/logo1.png" alt="Italian Trulli"></img>
     </div>
   );
 }

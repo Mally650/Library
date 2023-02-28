@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { format } from "date-fns";
 
 export default function LendedBooks({ customerId }) {
     const [lendedBooks, setlendedBooks] = useState([]);
@@ -38,7 +39,7 @@ export default function LendedBooks({ customerId }) {
             })
 
     }
-    return <div id="LendedBooks">
+    return <div className="lended-books-frame" id="LendedBooks">
         <h3>ספרים מושאלים</h3>
         <table>
             <tr><th>שם ספר</th><th>תאריך השאלה</th><th></th></tr>
@@ -46,7 +47,7 @@ export default function LendedBooks({ customerId }) {
             
             lendedBooks.map(e =>
                 <tr key={e.id}>
-                    <td>{e.name}</td><td>{e.Date_Lended} </td>  <td>
+                    <td>{e.name}</td><td>{format(new Date(e.Date_Lended), "dd-MM-yyyy")}  </td>  <td>
                     <button onClick={() => returnBook(e.id)}>להחזרה</button> 
                </td> </tr>
             )

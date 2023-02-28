@@ -6,7 +6,7 @@ import AddsPopup from '../Popups/AddsPopup';
 import { useNavigate } from "react-router-dom";
 
 const schema = yup.object({
-    name: yup.string().required().matches(/^[aA-zZ]+$/, "Only alphabets are allowed for this field "),
+    name: yup.string().required().matches(/^[aA-zZא-ת]+$/, "Only alphabets are allowed for this field "),
     year: yup.string().required(),
     cnt: yup.number().positive().integer().required(),
 }).required();
@@ -139,56 +139,64 @@ export default function NewBook() {
             })
     };
 
-   return (
-        <form onSubmit={handleSubmit(onSubmit)}>
-            <div className='navbar'>
-                 <img id="logo1" src="../images/logo1.png"  alt="Italian Trulli"></img>
-          <h3>הוספת ספר</h3>
+    return (
+        <form className="add-book-form" onSubmit={handleSubmit(onSubmit)}>
+            <div className='header-section'>
+                <img className='logo-image' src="../images/small-logo.png" alt="Italian Trulli"></img>
+                <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
             </div>
-            <input id="inputEnter"  {...register("name")} placeholder="שם" type="text" />
-            <p>{errors.name?.message}</p>
-            <label>סופר</label>
-            <select id="inputEnter"{...register("authers")} name="authers">
-                <option key="0" id="0" value="NULL" ></option>
-                {authers.map(e =>
-                    <option key={e.id} value={e.id}>{e.name}</option>)
-                }
-            </select>
-            <AddsPopup id={4} name="סופר" update={() => setupdate(1)} />
-            <br />
-            <label>קטגוריה</label>
-            <select id="inputEnter"{...register("categories")} >
-                <option key="0" value="NULL"></option>
-                {categoreis.map(e =>
-                    <option key={e.id} value={e.id}>{e.name}</option>)
-                }
-            </select>
-            <AddsPopup id={1} name="קטגוריה" update={() => setupdate(2)} />
-            <br />
-            <label>עמודה</label>
-            <select id="inputEnter"{...register("column")} >
-                <option key="0" value="NULL"></option>
-                {columns.map(e =>
-                    <option key={e.id} value={e.id}>{e.name}</option>)
-                }
-            </select>
-            <AddsPopup id={2} name="עמודה" update={() => setupdate(3)} />
-            <br />
-            <label>מדף</label>
-            <select id="inputEnter"{...register("shelf")} >
-                <option key="0" value="NULL"></option>
-                {shelves.map(e =>
-                    <option key={e.id} value={e.id}>{e.name}</option>)
-                }
-            </select>
-            <AddsPopup id={3} name="מדף" update={() => setupdate(4)} />
-            <br />
-            <br />
-            <input id="inputEnter" {...register("year")} placeholder="שנת הוצאה" />
-            <p>{errors.year?.message}</p>
-            <input id="inputEnter"{...register("cnt")} placeholder="כמות עותקים" />
-            <p>{errors.cnt?.message}</p>
-            <input id="toSubmitEnter"type="submit" value="הוספה" />
+
+            <h3>הוספת ספר</h3>
+            <div className="flex-row">
+                <div>
+                    <input   {...register("name")} placeholder="שם" type="text" />
+                    <p className='error-label'>{errors.name?.message}</p>
+                    <input  {...register("year")} placeholder="שנת הוצאה" />
+                    <p className='error-label'>{errors.year?.message}</p>
+                    <input {...register("cnt")} placeholder="כמות עותקים" />
+                    <p className='error-label'>{errors.cnt?.message}</p>
+                    <input type="submit" value="הוספה" />
+                </div>
+                <div className="flex-column">
+                    <label>סופר</label>
+                    <select {...register("authers")} name="authers">
+                        <option key="0" id="0" value="NULL" ></option>
+                        {authers.map(e =>
+                            <option key={e.id} value={e.id}>{e.name}</option>)
+                        }
+                    </select>
+                    <AddsPopup id={4} name="סופר" update={() => setupdate(1)} />
+
+                    <label>קטגוריה</label>
+                    <select {...register("categories")} >
+                        <option key="0" value="NULL"></option>
+                        {categoreis.map(e =>
+                            <option key={e.id} value={e.id}>{e.name}</option>)
+                        }
+                    </select>
+                    <AddsPopup id={1} name="קטגוריה" update={() => setupdate(2)} />
+
+                    <label>עמודה</label>
+                    <select {...register("column")} >
+                        <option key="0" value="NULL"></option>
+                        {columns.map(e =>
+                            <option key={e.id} value={e.id}>{e.name}</option>)
+                        }
+                    </select>
+                    <AddsPopup id={2} name="עמודה" update={() => setupdate(3)} />
+
+                    <label>מדף</label>
+                    <select {...register("shelf")} >
+                        <option key="0" value="NULL"></option>
+                        {shelves.map(e =>
+                            <option key={e.id} value={e.id}>{e.name}</option>)
+                        }
+                    </select>
+                    <AddsPopup id={3} name="מדף" update={() => setupdate(4)} />
+                </div>
+            </div>
+
+
         </form>
     );
 }

@@ -1,0 +1,225 @@
+// body:has(.login-frame) {
+//   background-image: url(../public/images/small-logo.png);
+//   background-attachment: fixed;
+//   background-size: 100% 100%;
+//   background-repeat: no-repeat;
+// }
+.header-section {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 87px;
+  box-shadow: 0 5px 20px rgb(0 0 0 / 25%);
+  .logo-image {
+    position: relative;
+    width: 6rem;
+    margin: auto;
+  }
+}
+.login-frame,
+.enter-form {
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  position: absolute;
+  width: 273px;
+  border: 1px solid #fff;
+  border-radius: 1rem;
+  padding: 2rem;
+  border: 1px solid black;
+  border-radius: 14px;
+  display: flex;
+  flex-direction: column;
+}
+button,
+input[type="submit"] {
+  font-family: Rubik-Light;
+  border: 1px solid #10abd9;
+  border-radius: 1rem;
+  padding: 0.5rem 2rem;
+  text-align: center;
+  margin: 1rem auto;
+  cursor: pointer;
+  min-height: 40px;
+  min-width: 200px;
+  max-width: 250px;
+  background-color: #fff;
+  &.login-btn-customer {
+    color: #fff;
+    background: #10abd9;
+    max-width: 320px;
+    border: none;
+    outline: none;
+    box-shadow: 0 0 15px 1px rgb(16 171 217 / 50%);
+  }
+  &.login-btn-employee {
+    background: #fff;
+    cursor: pointer;
+    height: 40px;
+    text-decoration: none;
+    color: #10abd9;
+    margin: 0.5rem auto;
+  }
+}
+input {
+  direction: rtl;
+  text-align: right;
+  font-size: 1rem;
+  display: block;
+  padding: 15px 10px;
+  width: 100%;
+  // margin: 9px 0;
+  color: #6b6b6b;
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+
+  direction: ltr;
+  font-family: OpenSans-Regular;
+  background-color: #fff;
+  &.search-input {
+    width: 500px;
+  }
+  &.left {
+    text-align: left;
+  }
+}
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.left-navbar {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+  width: 13%;
+  .navbar-item {
+    border: 0;
+    border-bottom: 1px solid black;
+    padding: 2rem;
+    cursor: pointer;
+  }
+}
+select {
+  border: 0;
+  border-bottom: 1px solid black;
+  width: 101px;
+}
+.search-wrapper {
+  direction: rtl;
+  margin: 1rem;
+  text-align: right;
+  select {
+    border: 0;
+    border-bottom: 1px solid black;
+    width: 101px;
+  }
+  table {
+    line-height: 40px;
+    width: 90%;
+    margin: 0 15px;
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+}
+.add-book-form {
+  text-align: right;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.user-icon {
+  background-image: url(../public/svg-icons/user-solid.svg);
+  background-repeat: no-repeat;
+  height: 26px;
+  width: 35px;
+  background-position: center;
+  margin: auto;
+  display: block;
+  cursor: pointer;
+  // &:hover {
+  //   box-shadow: 0 0 15px 1px rgb(16 171 217 / 50%);
+  // }
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.logout-icon {
+  background-image: url(../public/svg-icons/logout.svg);
+  background-repeat: no-repeat;
+  background-size: 35px 18px;
+  width: 101px;
+  height: 21px;
+  cursor: pointer;
+}
+.back-icon {
+  background-image: url(../public/svg-icons/back-icon.svg);
+  background-repeat: no-repeat;
+  background-size: 35px 18px;
+  width: 101px;
+  height: 21px;
+  cursor: pointer;
+}
+.error-label {
+  color: #e2464f;
+  text-align: left;
+  padding-bottom: 1rem;
+  max-width: 25em;
+  font-family: Roboto-light;
+  font-size: 11px;
+  // padding-top: 2px;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.lended-books-frame,
+.wishes-books-frame {
+  text-align: right;
+  table {
+    line-height: 40px;
+    width: 90%;
+    margin: 0 15px;
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+    td {
+      padding: 10px;
+    }
+  }
+  h3 {
+    margin: 0 15px;
+  }
+}

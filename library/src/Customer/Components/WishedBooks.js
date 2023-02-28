@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { format } from "date-fns";
 
 export default function Wishedbooks({ customerId }) {
     const [wishedbooks, setwishedbooks] = useState([]);
@@ -25,14 +26,14 @@ export default function Wishedbooks({ customerId }) {
             })
 
     }
-    return <div id="WisheddBooks">
-        <h3>ספרים שאתה ממתין</h3>
+    return <div id="WisheddBooks" className="wishes-books-frame">
+        <h3>ספרים שאתה ממתין להשאיל</h3>
         <table>
             <tr><th>שם ספר</th><th>תאריך בקשה</th><th></th></tr>
         {
             wishedbooks.map(e =>
                 <tr key={e.id}>
-                    <td>{e.name}</td>  <td>{e.Date_required} </td> <td>
+                    <td>{e.name}</td>  <td>{format(new Date(e.Date_required), "dd-MM-yyyy")} </td> <td>
                     <button onClick={() => canceling(e.id)}>ביטול המתנה</button>
                </td> </tr>
             )

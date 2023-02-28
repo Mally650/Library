@@ -1,5 +1,5 @@
 import React from 'react';
-import { useNavigate} from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import EmployeeTasks from './Components/Tasks';
 
 import { date } from 'yup';
@@ -10,16 +10,20 @@ function Employee({ employee, logout }) {
   const navigate = useNavigate();
 
   return (
-    <div><div className='navbar'>
-    <img id="logo" src="../images/logo1.png"  alt="Italian Trulli"></img>
-<label id="date">תאריך:{date}</label>
-          <label>שם:{employee.name}</label>
-      <button className='logoutB' onClick={() => { navigate('/'); logout() }}>התנתק</button>
+    <div><div className='header-section'>
+      <img className='logo-image' src="../images/small-logo.png" alt="Italian Trulli"></img>
+
+      <div className='flex-column'>
+        <label id="date">תאריך:{date}</label>
+        <label>שם:{employee.name}</label>
+      </div>
       <button onClick={() => navigate("/employee/addBook")}>הוספת ספר</button>
       <button onClick={() => navigate("/employee/search")}>חיפוש ספר</button>
-      </div>
+      <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
+      <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div>
+    </div>
       <EmployeeTasks />
-    
+
     </div>)
 }
 

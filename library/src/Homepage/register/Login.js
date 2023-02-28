@@ -32,7 +32,7 @@ export default function Login({ logedin, type }) {
         else alert('פרטי עובד שגויים')
         else if (data[0].id_Type == 3) {
           logedin(data[0]);
-         navigate('/customer')
+          navigate('/customer')
         } else
           alert('נא הרשם, -פרטי לקוח שגויים')
       })
@@ -43,21 +43,31 @@ export default function Login({ logedin, type }) {
   };
 
   return (
-    <div > <img id="logo1" src="../images/logo1.png" alt="Italian Trulli"></img>
-      <h3>כניסה לספרייה</h3>
-      <form onSubmit={handleSubmit(onSubmit)} className="enter">
-        <input id="inputEnter" {...register("id")} className="inputs" placeholder="id" />
-        <p>{errors.id?.message}</p>
+    <div>
+      <div className='header-section'>
+        <img className='logo-image' src='../images/small-logo.png'></img>
+        <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
+      </div>
 
-        <input id="inputEnter"{...register("password")} className="inputs" type="password" placeholder="Password" />
-        <p>{errors.password?.message}</p>
 
-        <input type="submit" className="inputs" id="toSubmitEnter" />
+
+      <form onSubmit={handleSubmit(onSubmit)} className="enter-form">
+        {(type == 3) ? <h3>כניסת לקוח</h3> : <h3>כניסת עובד</h3>}
+        <input  {...register("id")} placeholder="id" />
+        <p className='error-label'>{errors.id?.message}</p>
+
+        <input {...register("password")} type="password" placeholder="Password" />
+        <p className='error-label'>{errors.password?.message}</p>
+
+        <input type="submit" id="toSubmitEnter" />
+        <Link to="/signin/login">Back</Link>
+
+        {(type === 3) ?
+          <Link to="/signin/customer">לקוח חדש? הרשם</Link> : ""
+        }
       </form>
-      {(type === 3) ?
-        <Link to="/signin/customer">לקוח חדש? הרשם</Link> : ""
-      }
-     </div>
+
+    </div>
 
   );
 }

@@ -50,17 +50,17 @@ export default function EmployeeTasks() {
         <h3>הספרים הממתינים לטיפול</h3>
         <table>
             <tr><th>שם ספר</th><th>מצב נוכחי</th><th></th></tr>
-        {
+            {
 
-            tasks.map(e =>
-                <tr key={e.id}>
-                    <td>{e.book_name}</td><td> {e.status_name}</td>
-                    <td>
-                    <button onClick={() => removeTask(e.id)}>X</button>
-                    <FixBookPopup book_id={e.id} finish={() => removeTask(e.id)} />
-              </td>  </tr>
-            )
-        }
+                tasks.map(e =>
+                    <tr key={e.id}>
+                        <td>{e.book_name}</td><td> {e.status_name}</td>
+                        <td>
+                            <button onClick={() => removeTask(e.id)}>X</button>
+                            <FixBookPopup book_id={e.id} finish={() => removeTask(e.id)} />
+                        </td>  </tr>
+                )
+            }
         </table>
 
     </div>
