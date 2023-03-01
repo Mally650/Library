@@ -7,6 +7,9 @@ function Search({ customerId, type }) {
     const [categories, setcategories] = useState([]);
     const [countlended, setcountlended] = useState();
     const [filter, setfilter] = useState({ Categories: null, authers: null, word: null })
+
+    const navigate=useNavigate();
+    
     useEffect(() => {
         fetch(`http://localhost:3003/api/customer/getvalues/auther`, { method: "GET" })
             .then(response => response.json())
