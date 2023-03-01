@@ -62,7 +62,7 @@ export default function Signin({ signin, type }) {
         <p className='error-label'>{errors.mail?.message}</p>
         <input {...register("password")} type="password" placeholder="Password" />
         <p className='error-label'>{errors.password?.message}</p>
-        <input id="toSubmitEnter" type="submit" />
+        <input id="toSubmitEnter" type="submit" className="login-btn-customer"/>
         <Link to="/signin/login">Back</Link>
       </form>
     </div>
