@@ -155,7 +155,7 @@ export default function NewBook() {
                     <p className='error-label'>{errors.year?.message}</p>
                     <input {...register("cnt")} placeholder="כמות עותקים" />
                     <p className='error-label'>{errors.cnt?.message}</p>
-                    <input type="submit" value="הוספה" />
+                    <input className="add-icon-solid" type="submit" value="הוספה" />
                 </div>
                 <div className="flex-column">
                     <label>סופר</label>

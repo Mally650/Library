@@ -34,7 +34,7 @@ export default function Wishedbooks({ customerId }) {
             wishedbooks.map(e =>
                 <tr key={e.id}>
                     <td>{e.name}</td>  <td>{format(new Date(e.Date_required), "dd-MM-yyyy")} </td> <td>
-                    <button onClick={() => canceling(e.id)}>ביטול המתנה</button>
+                    <button className="trash-icon" onClick={() => canceling(e.id)}>ביטול המתנה</button>
                </td> </tr>
             )
         }

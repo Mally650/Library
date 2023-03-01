@@ -27,8 +27,8 @@ export default function Login({ logedin, type }) {
     })
       .then(response => response.json())
       .then(data => {
-        if (type != 3) if (data[0].id_Type == 1) { logedin(data[0]); alert('שלום ' + data[0].name + "אתה לאזור מנהל"); navigate('/manager') }
-        else if (data[0].id_Type == 2) { logedin(data[0]); alert('שלום ' + data[0].name + "אתה לאזור עובד"); navigate('/employee') }
+        if (type != 3) if (data[0].id_Type == 1) { logedin(data[0]); alert('שלום ' + data[0].name + " אתה לאזור מנהל "); navigate('/manager') }
+        else if (data[0].id_Type == 2) { logedin(data[0]); alert('שלום ' + data[0].name + " אתה לאזור עובד "); navigate('/employee') }
         else alert('פרטי עובד שגויים')
         else if (data[0].id_Type == 3) {
           logedin(data[0]);
@@ -59,7 +59,7 @@ export default function Login({ logedin, type }) {
         <input {...register("password")} type="password" placeholder="Password" />
         <p className='error-label'>{errors.password?.message}</p>
 
-        <input type="submit" id="toSubmitEnter" />
+        <input type="submit" id="toSubmitEnter" className="login-btn-customer"/>
         <Link to="/signin/login">Back</Link>
 
         {(type === 3) ?
