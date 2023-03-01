@@ -104,30 +104,35 @@ function Search({ customerId, type }) {
         <div>
             <div className='header-section'>
                 <img className='logo-image' src="../images/small-logo.png" alt="Italian Trulli"></img>
-                <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
+                <div className="back-icon" title="back" onClick={() => Navigate("/")}></div>
             </div>
             <div className='search-wrapper'>
                 <h3>חיפוש</h3>
-                <table>
-                    <tr><th>
+                <div className='filter-area'>
+                    <div className='filter-item'>
                         <label>סופר</label>
                         <select name="authers" id="1" onChange={(e) => changeFilter(e.target.value, "authers")}>
                             <option key="0" id="0" value="NULL" ></option>
-                            {authers.map(e =>
-                                <option key={e.id} id={e.id} value={e.id}>{e.name}</option>)
+                            {
+                                authers.map(e =>
+                                    <option key={e.id} id={e.id} value={e.id}>{e.name}</option>)
                             }
-                        </select></th><th>
-                            <label>קטגוריה</label>
-                            <select name="Categories" id="0" onChange={(e) => changeFilter(e.target.value, "Categories")}>
-                                <option key="0" value="NULL"></option>
-                                {categories.map(e =>
-                                    <option key={e.id} value={e.id}>{e.name}</option>)
-                                }
-                            </select></th><th>
-                            <label>שם הספר:</label>
-                            <input className='search-input' type="text" onChange={(e) => changeFilter(e.target.value, "word")} />
-                        </th></tr>
-                </table>
+                        </select>
+                    </div>
+                    <div className='filter-item'>
+                        <label>קטגוריה</label>
+                        <select name="Categories" id="0" onChange={(e) => changeFilter(e.target.value, "Categories")}>
+                            <option key="0" value="NULL"></option>
+                            {categories.map(e =>
+                                <option key={e.id} value={e.id}>{e.name}</option>)
+                            }
+                        </select>
+                    </div>
+                    <div className='filter-item'>
+                        <label>שם הספר:</label>
+                        <input className='search-input' type="text" onChange={(e) => changeFilter(e.target.value, "word")} />
+                    </div>
+                </div>
                 <br />
                 <table>
                     <tr><th>שם ספר</th><th>שם סופר </th><th>קטגוריה</th><th></th></tr>{
@@ -135,9 +140,9 @@ function Search({ customerId, type }) {
                             <tr key={e.id}>
                                 <td>{e.name}</td><td> {e.auther_name}</td><td> {e.name_category}</td><td>
                                     {(type === 1) ?
-                                        (countlended < 5 && e.CountOfCopies > 0) ? <button onClick={() => LendBook(e.id)} >להשאלה</button>
-                                            : <button onClick={() => WaitBook(e.id)} >הוספה לרשימת המתנה</button> :
-                                        <button onClick={() => AddCopy(e.id)}>הוספת עותק</button>}
+                                        (countlended < 5 && e.CountOfCopies > 0) ? <button className='add-to-card-icon' onClick={() => LendBook(e.id)} >להשאלה</button>
+                                            : <button className='add-wishlist-icon' onClick={() => WaitBook(e.id)} >הוספה לרשימת המתנה</button> :
+                                        <button className="add-icon-solid" onClick={() => AddCopy(e.id)}>הוספת עותק</button>}
                                 </td> </tr>
                         )
                     }

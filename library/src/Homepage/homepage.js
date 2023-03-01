@@ -8,6 +8,7 @@ function Open() {
       <div className='header-section'>
       <img className='logo-image' src='../images/small-logo.png'></img>
       <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
+     
       </div>
       <div className='login-frame'>
         <div>איזה סוג משתמש אתה?

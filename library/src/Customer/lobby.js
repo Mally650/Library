@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import LendedBooks from './Components/LendedBooks';
 import Wishedbooks from './Components/WishedBooks';
+import { format } from "date-fns";
 
 function Customer({ customer, logout }) {
     const navigate = useNavigate();
@@ -18,12 +19,13 @@ function Customer({ customer, logout }) {
 
 
                 <div className='flex-column'>
-                    <label id="date">תאריך:{date}</label>
+                    <label id="date">תאריך: {format(new Date(date), "dd-MM-yyyy")} </label>
                     <label>שם:{customer.name}</label>
                 </div>
-                <button onClick={() => navigate('/customer/search')}>חיפוש ספר להשאלה</button>
-                <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
-                <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div>
+                <button className='search-icon' onClick={() => navigate('/customer/search')}>חיפוש ספר להשאלה</button>
+                <div className='flex-row'>
+                    <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
+                    <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div></div>
             </div>
 
 

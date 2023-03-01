@@ -141,7 +141,7 @@ export default function AddsPopup({ id, name, update }) {
                                     }
                                 </select></div> : ''
                     }
-                    <button onClick={()=>add(()=>close())}>הוספה</button>
+                    <button className="add-icon-solid" onClick={()=>add(()=>close())}>הוספה</button>
                 </div>
             )}
         </Popup>)

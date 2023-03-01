@@ -48,7 +48,7 @@ export default function LendedBooks({ customerId }) {
             lendedBooks.map(e =>
                 <tr key={e.id}>
                     <td>{e.name}</td><td>{format(new Date(e.Date_Lended), "dd-MM-yyyy")}  </td>  <td>
-                    <button onClick={() => returnBook(e.id)}>להחזרה</button> 
+                    <button className="rotate-icon" onClick={() => returnBook(e.id)}>להחזרה</button> 
                </td> </tr>
             )
         }</table>
