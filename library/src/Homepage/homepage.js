@@ -6,9 +6,12 @@ function Open() {
   return (
     <div>
       <div className='header-section'>
-      <img className='logo-image' src='../images/small-logo.png'></img>
-      <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
-     
+         <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
+        <div className='actions-bar'>
+          <div className="icon order-3">
+            <div className="back-icon" onClick={() => navigate("/")} title="חזור"></div>
+          </div>
+        </div>
       </div>
       <div className='login-frame'>
         <div>איזה סוג משתמש אתה?

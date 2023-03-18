@@ -11,16 +11,25 @@ function Employee({ employee, logout }) {
 
   return (
     <div><div className='header-section'>
-      <img className='logo-image' src="../images/small-logo.png" alt="Italian Trulli"></img>
-
-      <div className='flex-column'>
-      <label id="date">תאריך: {format(new Date(date), "dd-MM-yyyy")} </label>
+      <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
+      <div className='details-box flex-column'>
+        <label id="date">תאריך: {format(new Date(date), "dd-MM-yyyy")} </label>
         <label>שם:{employee.name}</label>
       </div>
-      <button className='add-book' onClick={() => navigate("/employee/addBook")}>הוספת ספר</button>
-      <button className='search-icon' onClick={() => navigate("/employee/search")}>חיפוש ספר</button>
-      <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
-      <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div>
+      <div className='actions-bar'>
+        <div className="icon order-4">
+          <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div>
+        </div>
+        <div className="icon order-3">
+          <div className="back-icon" onClick={() => navigate("/")} title="חזור"></div>
+        </div>
+        <div className="order-2">
+          <button className='add-book' onClick={() => navigate("/employee/addBook")}>הוספת ספר</button>
+        </div>
+        <div className="order-1">
+          <button className='search-icon' onClick={() => navigate("/employee/search")}>חיפוש ספר</button>
+        </div>
+      </div>
     </div>
       <EmployeeTasks />
 

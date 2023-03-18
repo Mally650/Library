@@ -11,23 +11,25 @@ function Customer({ customer, logout }) {
 
     return (
         <div>
-
-            {/* <div className='navbar'> */}
             <div className='header-section'>
-                <img className='logo-image' src='../images/small-logo.png'></img>
-                {/* <img id="logo" src="../images/small-logo.png" alt="Italian Trulli"></img> */}
-
-
-                <div className='flex-column'>
+                <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
+                 <div className='details-box flex-column'>
                     <label id="date">תאריך: {format(new Date(date), "dd-MM-yyyy")} </label>
                     <label>שם:{customer.name}</label>
                 </div>
-                <button className='search-icon' onClick={() => navigate('/customer/search')}>חיפוש ספר להשאלה</button>
-                <div className='flex-row'>
-                    <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
-                    <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div></div>
-            </div>
+                <div className='actions-bar'>
+                    <div className="icon order-4">
+                        <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div>
 
+                    </div>
+                    <div className="icon order-3">
+                        <div className="back-icon" onClick={() => navigate("/")} title="חזור"></div>
+                    </div>
+                    <div className="order-1">
+                    <button className='search-icon' onClick={() => navigate('/customer/search')}>חיפוש ספר להשאלה</button>
+                    </div>
+                </div>
+            </div>
 
             <br></br>
             <LendedBooks customerId={customer.id} />

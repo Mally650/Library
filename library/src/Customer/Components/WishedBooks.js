@@ -28,16 +28,20 @@ export default function Wishedbooks({ customerId }) {
     }
     return <div id="WisheddBooks" className="wishes-books-frame">
         <h3>ספרים שאתה ממתין להשאיל</h3>
-        <table>
-            <tr><th>שם ספר</th><th>תאריך בקשה</th><th></th></tr>
-        {
-            wishedbooks.map(e =>
-                <tr key={e.id}>
-                    <td>{e.name}</td>  <td>{format(new Date(e.Date_required), "dd-MM-yyyy")} </td> <td>
-                    <button className="trash-icon" onClick={() => canceling(e.id)}>ביטול המתנה</button>
-               </td> </tr>
-            )
-        }
-        </table>
+        <div className='book-list'>
+            {
+                wishedbooks.map(e =>
+                    <div className="book-card" key={e.id}>
+                        <img className="book-image" src={require(`../../../public/images/${e.imageName}.jpg`)} />
+                        <span>{e.name}</span>
+                        <span>תאריך בקשה: </span>
+                        <span> {format(new Date(e.Date_required), "dd-MM-yyyy")} </span>
+                        <span>
+                            <button className="trash-icon" onClick={() => canceling(e.id)}>ביטול המתנה</button>
+                        </span>
+                    </div>
+                )
+            }
+        </div>
     </div>
 }
