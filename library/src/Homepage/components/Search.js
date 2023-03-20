@@ -106,7 +106,7 @@ function Search({ customerId, type }) {
     return (
         <div>
             <div className='header-section'>
-                <img className='logo-image' src="../images/small-logo.png" alt="Italian Trulli"></img>
+                <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
                 <div className="back-icon" title="back" onClick={() => Navigate("/")}></div>
             </div>
             <div className='search-wrapper'>

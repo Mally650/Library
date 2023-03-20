@@ -11,7 +11,7 @@ function Employee({ employee, logout }) {
 
   return (
     <div><div className='header-section'>
-      <img className='logo-image' src="../images/small-logo.png" alt="Italian Trulli"></img>
+      <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
 
       <div className='flex-column'>
       <label id="date">תאריך: {format(new Date(date), "dd-MM-yyyy")} </label>

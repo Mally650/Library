@@ -14,7 +14,7 @@ function Customer({ customer, logout }) {
 
             {/* <div className='navbar'> */}
             <div className='header-section'>
-                <img className='logo-image' src='../images/small-logo.png'></img>
+                <img className='logo-image' src='../images/Library.jpg'></img>
                 {/* <img id="logo" src="../images/small-logo.png" alt="Italian Trulli"></img> */}
 
 
