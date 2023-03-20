@@ -45,10 +45,14 @@ export default function Login({ logedin, type }) {
   return (
     <div>
       <div className='header-section'>
-        <img className='logo-image' src='../images/Library.jpg'></img>
-        <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
-      </div>
+        <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
 
+        <div className='actions-bar'>
+          <div className="icon order-2">
+            <div className="back-icon" onClick={() => navigate("/")} title="חזור"></div>
+          </div>
+        </div>
+      </div>
 
 
       <form onSubmit={handleSubmit(onSubmit)} className="enter-form">
@@ -59,7 +63,7 @@ export default function Login({ logedin, type }) {
         <input {...register("password")} type="password" placeholder="Password" />
         <p className='error-label'>{errors.password?.message}</p>
 
-        <input type="submit" id="toSubmitEnter" className="login-btn-customer"/>
+        <input type="submit" id="toSubmitEnter" className="login-btn-customer" />
         <Link to="/signin/login">Back</Link>
 
         {(type === 3) ?

@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const schema = yup.object({
     name: yup.string().required().matches(/^[aA-zZא-ת]+$/, "Only alphabets are allowed for this field "),
     year: yup.string().required(),
+    imageName: yup.string().required(),
     cnt: yup.number().positive().integer().required(),
 }).required();
 
@@ -142,61 +143,66 @@ export default function NewBook() {
     return (
         <form className="add-book-form" onSubmit={handleSubmit(onSubmit)}>
             <div className='header-section'>
-                <img className='logo-image' src="../images/small-logo.png" alt="Italian Trulli"></img>
-                <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
-            </div>
-
-            <h3>הוספת ספר</h3>
-            <div className="flex-row">
-                <div>
-                    <input   {...register("name")} placeholder="שם" type="text" />
-                    <p className='error-label'>{errors.name?.message}</p>
-                    <input  {...register("year")} placeholder="שנת הוצאה" />
-                    <p className='error-label'>{errors.year?.message}</p>
-                    <input {...register("cnt")} placeholder="כמות עותקים" />
-                    <p className='error-label'>{errors.cnt?.message}</p>
-                    <input className="add-icon-solid" type="submit" value="הוספה" />
-                </div>
-                <div className="flex-column">
-                    <label>סופר</label>
-                    <select {...register("authers")} name="authers">
-                        <option key="0" id="0" value="NULL" ></option>
-                        {authers.map(e =>
-                            <option key={e.id} value={e.id}>{e.name}</option>)
-                        }
-                    </select>
-                    <AddsPopup id={4} name="סופר" update={() => setupdate(1)} />
-
-                    <label>קטגוריה</label>
-                    <select {...register("categories")} >
-                        <option key="0" value="NULL"></option>
-                        {categoreis.map(e =>
-                            <option key={e.id} value={e.id}>{e.name}</option>)
-                        }
-                    </select>
-                    <AddsPopup id={1} name="קטגוריה" update={() => setupdate(2)} />
-
-                    <label>עמודה</label>
-                    <select {...register("column")} >
-                        <option key="0" value="NULL"></option>
-                        {columns.map(e =>
-                            <option key={e.id} value={e.id}>{e.name}</option>)
-                        }
-                    </select>
-                    <AddsPopup id={2} name="עמודה" update={() => setupdate(3)} />
-
-                    <label>מדף</label>
-                    <select {...register("shelf")} >
-                        <option key="0" value="NULL"></option>
-                        {shelves.map(e =>
-                            <option key={e.id} value={e.id}>{e.name}</option>)
-                        }
-                    </select>
-                    <AddsPopup id={3} name="מדף" update={() => setupdate(4)} />
+                <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
+                <div className='actions-bar'>
+                    <div className="icon order-3">
+                        <div className="back-icon" onClick={() => navigate("/")} title="חזור"></div>
+                    </div>
                 </div>
             </div>
+            <div className="content">
+                <h3>הוספת ספר</h3>
+                <div className="flex-row">
+                    <div className="flex-column">
+                        <input   {...register("name")} placeholder="שם" type="text" />
+                        <p className='error-label'>{errors.name?.message}</p>
+                        <input  {...register("year")} placeholder="שנת הוצאה" />
+                        <p className='error-label'>{errors.year?.message}</p>
+                        <input {...register("cnt")} placeholder="כמות עותקים" />
+                        <p className='error-label'>{errors.cnt?.message}</p>
+                        <input {...register("imageName")} placeholder="שם תמונה" />
+                        <p className='error-label'>{errors.imageName?.message}</p>
+                        <input className="add-icon-solid" type="submit" value="הוספה" />
+                    </div>
+                    <div className="flex-column">
+                        <label>סופר</label>
+                        <select {...register("authers")} name="authers">
+                            <option key="0" id="0" value="NULL" ></option>
+                            {authers.map(e =>
+                                <option key={e.id} value={e.id}>{e.name}</option>)
+                            }
+                        </select>
+                        <AddsPopup id={4} name="סופר" update={() => setupdate(1)} />
 
+                        <label>קטגוריה</label>
+                        <select {...register("categories")} >
+                            <option key="0" value="NULL"></option>
+                            {categoreis.map(e =>
+                                <option key={e.id} value={e.id}>{e.name}</option>)
+                            }
+                        </select>
+                        <AddsPopup id={1} name="קטגוריה" update={() => setupdate(2)} />
 
+                        <label>עמודה</label>
+                        <select {...register("column")} >
+                            <option key="0" value="NULL"></option>
+                            {columns.map(e =>
+                                <option key={e.id} value={e.id}>{e.name}</option>)
+                            }
+                        </select>
+                        <AddsPopup id={2} name="עמודה" update={() => setupdate(3)} />
+
+                        <label>מדף</label>
+                        <select {...register("shelf")} >
+                            <option key="0" value="NULL"></option>
+                            {shelves.map(e =>
+                                <option key={e.id} value={e.id}>{e.name}</option>)
+                            }
+                        </select>
+                        <AddsPopup id={3} name="מדף" update={() => setupdate(4)} />
+                    </div>
+                </div>
+            </div>
         </form>
     );
 }

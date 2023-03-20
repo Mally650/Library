@@ -41,17 +41,21 @@ export default function LendedBooks({ customerId }) {
     }
     return <div className="lended-books-frame" id="LendedBooks">
         <h3>ספרים מושאלים</h3>
-        <table>
-            <tr><th>שם ספר</th><th>תאריך השאלה</th><th></th></tr>
-        {
-            
-            lendedBooks.map(e =>
-                <tr key={e.id}>
-                    <td>{e.name}</td><td>{format(new Date(e.Date_Lended), "dd-MM-yyyy")}  </td>  <td>
-                    <button className="rotate-icon" onClick={() => returnBook(e.id)}>להחזרה</button> 
-               </td> </tr>
-            )
-        }</table>
+        <div className='book-list'>
+            {
+
+                lendedBooks.map(e =>
+                    <div className='book-card' key={e.id}>
+                        <img className="book-image" src={require(`../../../public/images/${e.imageName}.jpg`)} />
+                        <span>{e.name}</span>
+                        <span>תאריך השאלה: </span>
+                        <span className="date-value">{format(new Date(e.Date_Lended), "dd-MM-yyyy")}</span>
+                        <span>
+                            <button className="rotate-icon" onClick={() => returnBook(e.id)}>להחזרה</button>
+                        </span>
+                    </div>
+                )
+            }</div>
 
     </div>
 }

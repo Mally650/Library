@@ -44,13 +44,17 @@ export default function Signin({ signin, type }) {
 
   return (
     <div>
-      <div className="header-section">
+      <div className='header-section'>
         <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
-        <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
 
+        <div className='actions-bar'>
+          <div className="icon order-2">
+            <div className="back-icon" onClick={() => navigate("/")} title="חזור"></div>
+          </div>
+        </div>
       </div>
       <form onSubmit={handleSubmit(onSubmit)} className="enter-form">
-      {type == 3 ? <h3>הרשמה לספרייה</h3> : <h3>הוספת עובד</h3>}
+        {type == 3 ? <h3>הרשמה לספרייה</h3> : <h3>הוספת עובד</h3>}
 
         <input {...register("name")} placeholder="Name" type="text" />
         <p className='error-label'>{errors.name?.message}</p>
@@ -62,7 +66,7 @@ export default function Signin({ signin, type }) {
         <p className='error-label'>{errors.mail?.message}</p>
         <input {...register("password")} type="password" placeholder="Password" />
         <p className='error-label'>{errors.password?.message}</p>
-        <input id="toSubmitEnter" type="submit" className="login-btn-customer"/>
+        <input id="toSubmitEnter" type="submit" className="login-btn-customer" />
         <Link to="/signin/login">Back</Link>
       </form>
     </div>

@@ -107,7 +107,11 @@ function Search({ customerId, type }) {
         <div>
             <div className='header-section'>
                 <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
-                <div className="back-icon" title="back" onClick={() => Navigate("/")}></div>
+                <div className='actions-bar'>
+                    <div className="icon order-2">
+                        <div className="back-icon" onClick={() => Navigate("/")} title="חזור"></div>
+                    </div>
+                </div>
             </div>
             <div className='search-wrapper'>
                 <h3>חיפוש</h3>
@@ -137,19 +141,24 @@ function Search({ customerId, type }) {
                     </div>
                 </div>
                 <br />
-                <table>
-                    <tr><th>שם ספר</th><th>שם סופר </th><th>קטגוריה</th><th></th></tr>{
+                <div className='book-list'>
+                    {
                         books.map(e =>
-                            <tr key={e.id}>
-                                <td>{e.name}</td><td> {e.auther_name}</td><td> {e.name_category}</td><td>
+                            <div className='book-card' key={e.id}>
+                                <img className="book-image" src={require(`../../../public/images/${e.imageName}.jpg`)} />
+                                <span>{e.name}</span>
+                                <span> {e.auther_name}</span>
+                                <span>קטגוריה: {e.name_category}</span>
+                                <span>
                                     {(type === 1) ?
                                         (countlended < 5 && e.CountOfCopies > 0) ? <button className='add-to-card-icon' onClick={() => LendBook(e.id)} >להשאלה</button>
                                             : <button className='add-wishlist-icon' onClick={() => WaitBook(e.id)} >הוספה לרשימת המתנה</button> :
                                         <button className="add-icon-solid" onClick={() => AddCopy(e.id)}>הוספת עותק</button>}
-                                </td> </tr>
+                                </span>
+                            </div>
                         )
                     }
-                </table>
+                </div>
             </div>
         </div>
     )

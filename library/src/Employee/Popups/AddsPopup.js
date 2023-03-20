@@ -8,7 +8,7 @@ export default function AddsPopup({ id, name, update }) {
     const [selectCategory, setSelectCategory] = useState("")
     const [selectColumn, setSelectColumn] = useState("")
     const [ADDname, setADDname] = useState("")
-    console.log(update,id ,name)
+    console.log(update, id, name)
     useEffect(() => {
         if (id === parseInt(2))
             fetch(`http://localhost:3003/api/employee/getvalues/categories`, { method: "GET" })
@@ -70,14 +70,16 @@ export default function AddsPopup({ id, name, update }) {
                     console.log(data)
                 })
                 .catch((err) => {
-                   alert('failed to connect to the server ')
+                    alert('failed to connect to the server ')
                 })
         }
-         else if (id == 3) {
-            fetch(`http://localhost:3003/api/employee/AddShelf`,{ method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+        else if (id == 3) {
+            fetch(`http://localhost:3003/api/employee/AddShelf`, {
+                method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
                     name: ADDname,
                     Column_id: selectColumn
-                })})
+                })
+            })
                 .then(response => response.json())
                 .then(data => {
                     console.log(data)
@@ -85,8 +87,8 @@ export default function AddsPopup({ id, name, update }) {
                 .catch((err) => {
                     alert('failed to connect to the server ')
                 })
-         }
-        else{
+        }
+        else {
             fetch(`http://localhost:3003/api/employee/addAuther`, {
                 method: "POST", headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
                     name: ADDname
@@ -114,34 +116,35 @@ export default function AddsPopup({ id, name, update }) {
             setSelectColumn(event.target.value)
     }
     return (
-        <Popup trigger={<button type='button'> הוספת {name}</button>} position="right center">
+        <Popup trigger={
+
+            <button type='button' className='square-button'> הוספת {name}</button>} position="center center">
             {close => (
                 <div>
                     <a className="close" onClick={close}>
                         &times;
                     </a>
-                    <label>הוספת {name}</label> <br />
+                    <label className='popup-title'>הוספת {name}</label> <br />
                     <input type="text" placeholder={" שם " + name} id="name" required onChange={addItem}></input>
                     {
-                        id === 2 ? <div><label>קטגוריה</label>
+                        id === 2 ? <div><label className='second-label'>קטגוריה</label>
                             <select name="Categories" id="Categories" value={selectCategory}
                                 onChange={handleChange}>
                                 <option key="0" value=""></option>
                                 {categoreis.map(e =>
                                     <option key={e.id} value={e.id}>{e.name}</option>)
                                 }
-                            </select></div> : id === 3 ? <div><label>עמודה</label>
+                            </select></div> : id === 3 ? <div><label className='second-label'>עמודה</label>
                                 <select name="column" id="column"
                                     value={selectColumn}
-                                    onChange={handleChange}
-                                >
+                                    onChange={handleChange}>
                                     <option key="0" value="NULL"></option>
                                     {columns.map(e =>
                                         <option key={e.id} value={e.id}>{e.name}</option>)
                                     }
                                 </select></div> : ''
                     }
-                    <button className="add-icon-solid" onClick={()=>add(()=>close())}>הוספה</button>
+                    <button className="add-icon-solid" onClick={() => add(() => close())}>הוספה</button>
                 </div>
             )}
         </Popup>)

@@ -48,20 +48,22 @@ export default function EmployeeTasks() {
     }
     return <div id="tasks">
         <h3>הספרים הממתינים לטיפול</h3>
-        <table>
-            <tr><th>שם ספר</th><th>מצב נוכחי</th><th></th></tr>
+        <div className='book-list'>
             {
 
                 tasks.map(e =>
-                    <tr key={e.id}>
-                        <td>{e.book_name}</td><td> {e.status_name}</td>
-                        <td>
+                    <div key={e.id}>
+                        <img className="book-image" src={require(`../../../public/images/${e.imageName}.jpg`)} />
+                        <span>שם ספר: {e.book_name}</span>
+                        <span>מצב נוכחי: {e.status_name}</span>
+                        <span>
                             <button onClick={() => removeTask(e.id)}>X</button>
                             <FixBookPopup book_id={e.id} finish={() => removeTask(e.id)} />
-                        </td>  </tr>
+                        </span>
+                    </div>
                 )
             }
-        </table>
+        </div>
 
     </div>
 }

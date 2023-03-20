@@ -13,13 +13,19 @@ function Manager({ manager, logout }) {
             <div className='header-section'>
                 <img className='logo-image' src="../images/Library.jpg" alt="Italian Trulli"></img>
 
-                <div className='flex-column'>
-                <label id="date">תאריך: {format(new Date(date), "dd-MM-yyyy")} </label>
+                <div className='details-box flex-column'>
+                    <label id="date">תאריך: {format(new Date(date), "dd-MM-yyyy")} </label>
                     <label>שם:{manager.name}</label>
                 </div>
-                <div>
-                    <div className="back-icon" title="back" onClick={() => navigate("/")}></div>
-                    <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div>
+                <div className='actions-bar'>
+
+                    <div className="icon order-1">
+                        <div className='logout-icon' onClick={() => { navigate('/'); logout() }} title="התנתק"></div>
+
+                    </div>
+                    <div className="icon order-2">
+                        <div className="back-icon" onClick={() => navigate("/")} title="חזור"></div>
+                    </div>
                 </div>
             </div>
             <div className='left-navbar'>
@@ -27,10 +33,12 @@ function Manager({ manager, logout }) {
                 <div className='navbar-item add-book' onClick={() => navigate("/manager/addBook")}>הוספת ספר</div>
                 <div className='navbar-item search-icon' onClick={() => navigate("/manager/search")}>חיפוש ספר</div>
             </div>
-            <AddsPopup id={4} name="סופר" update={() => { }} />
-            <AddsPopup id={1} name="קטגוריה" update={() => { }} />
-            <AddsPopup id={2} name="עמודה" update={() => { }} />
-            <AddsPopup id={3} name="מדף" update={() => { }} />
+            <div className='popup-area'>
+                <AddsPopup id={4} name="סופר" update={() => { }} />
+                <AddsPopup id={1} name="קטגוריה" update={() => { }} />
+                <AddsPopup id={2} name="עמודה" update={() => { }} />
+                <AddsPopup id={3} name="מדף" update={() => { }} />
+            </div>
         </div>)
 }
 export default Manager;

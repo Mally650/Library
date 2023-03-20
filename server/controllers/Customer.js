@@ -30,7 +30,7 @@ const fanctions = {
     GetLendedBooks: (req, res) => {
         try {
             let { id } = req.params
-            let sql = `select l.*,b.name
+            let sql = `select l.*,b.name,b.imageName
             from lending l join books_status bs
             on l.book_id=bs.id
             join books b on bs.book_id=b.id
@@ -51,7 +51,7 @@ const fanctions = {
     GetWaitingBooks: (req, res) => {
         try {
             let { id, index } = req.params
-            con.query(` select w.*,b.name
+            con.query(` select w.*,b.name,b.imageName
             from waiting_list w join books b
             on w.book_id=b.id
             where w.Persons_id=${id} and w.recived =0

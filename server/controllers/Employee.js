@@ -5,7 +5,7 @@ const fanctions = {
             let fulldate = new Date();
             let date = fulldate.getFullYear() + "-" + fulldate.getMonth() + "-" + fulldate.getDate();
             console.log(date)
-            let query = `select bs.id,b.name as book_name,s.name as status_name
+            let query = `select bs.id,b.name as book_name,s.name as status_name,b.imageName
             from lending l join books_status bs
             on l.book_id = bs.id
             join books b
